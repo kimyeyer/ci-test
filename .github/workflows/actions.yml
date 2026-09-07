@@ -1,0 +1,16 @@
+# 이름 짓기
+name : Github Actions 연습하기
+
+# 언제 동작할지
+on: push
+
+# 작업을 묶기
+jobs:
+  # 작업 이름
+  push-job:
+    # 어느 컴퓨터에서 돌릴지
+    runs-on: ubuntu-latest
+    # 단계
+    steps:
+      - name: 첫 번째 작업
+        run: echo "첫 번째 작업 실행 중"

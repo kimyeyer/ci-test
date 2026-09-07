@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
+/* 1단계: 라이트 모드 기본값 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --border: oklch(0.922 0 0);
+    /* TODO: foreground, card, card-foreground, muted-foreground, border 추가 */
 }
 
+@theme {
+    --animate-shake: shake 0.6s ease-in-out;
+    --animate-show-up: show-up 0.5s ease-in-out;
+
+    @keyframes shake {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes show-up {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+/* 2단계: 다크 모드에서 같은 토큰 덮어쓰기 */
+/* 참고: 다크모드 수업에서 배웠던 @custom-variant는 
+				dark: prefix를 .dark 클래스 기반으로 동작하게 할 때 사용합니다. */
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --border: oklch(0.922 0 0);
+
+    /* TODO: 다크 모드 값 추가 */
+}
+
+/* 3단계: Tailwind 유틸리티와 연결 */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-border: var(--border);
+    /* TODO: 나머지 매핑 추가 */
 }

@@ -1,0 +1,39 @@
+// src/components/Counter/index.tsx
+"use client";
+
+import { useState } from "react";
+
+export const Counter = () => {
+  const initialCount = 0; // 초기 카운트 값
+  const [count, setCount] = useState(initialCount);
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => setCount((prev) => prev - 1);
+  const reset = () => setCount(initialCount);
+  
+  return (
+    <div>
+      <button
+        className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+        onClick={decrement}
+      >
+        -
+      </button>
+      <span className="mt-4 text-center text-xl font-bold mx-4">{count}</span>
+
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+        onClick={increment}
+      >
+        +
+      </button>
+      <div>
+        <button
+          className="bg-gray-300 text-black px-4 py-2 rounded mt-4"
+          onClick={reset}
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  );
+};
