@@ -1,7 +1,7 @@
 
 
 import { render, screen } from "@testing-library/react";
-import LoginForm from ".";
+import { LoginForm } from ".";
 
 test("로그인 폼이 올바르게 렌더링 되는지 확인", () => {
     render(<LoginForm />);
