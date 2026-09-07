@@ -1,6 +1,6 @@
 # .github/workflows/actions.yml
 
-name: Github Actions로 테스트 자동화하기
+name: Github Actions로 테스트 자동화하기 cache후
 on: push
 
 jobs:
