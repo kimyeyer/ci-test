@@ -6,19 +6,28 @@ name: Github Actions로 테스트 자동화하기
 on: push
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Github Repository 불러오기
-        uses: actions/checkout@v6
+    first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Github Repository 불러오기
+              uses: actions/checkout@v6
 
-      - name: Node.js 설치
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
+            - name: Node.js 설치
+              uses: actions/setup-node@v4
+              with:
+                node-version: '24'
 
-      - name: 의존성(라이브러리) 설치
-        run: npm ci # npm i 대신 ci 사용하기
+            - name: 의존성(라이브러리) 설치
+              run: npm ci # npm i 대신 ci 사용하기
 
-      - name: 테스트 실행
-        run: npm test
+            - name: 테스트 실행
+              run: npm test
+
+    second-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 두 번째 작업의 1단계
+              run: echo "두 번째 작업이 드디어 시작되었습니다!"
+
+            - name: 두 번째 작업의 2단계
+              run: echo "두 번째 작업이 드디어 끝났습니다!"
